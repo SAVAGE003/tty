@@ -3774,6 +3774,19 @@ Type: Runtime
 
 The `util.getCallSite` API has been removed. Please use [`util.getCallSites()`][] instead.
 
+### DEP0187: `fs.existsSync` never throw on invalid arguments
+
+<!-- YAML
+changes:
+  - version: REPLACEME
+    pr-url: https://github.com/nodejs/node/pull/55753
+    description: Runtime deprecation.
+-->
+
+Type: Runtime
+
+Returning false on validation errors is deprecated.
+
 [NIST SP 800-38D]: https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-38d.pdf
 [RFC 6066]: https://tools.ietf.org/html/rfc6066#section-3
 [RFC 8247 Section 2.4]: https://www.rfc-editor.org/rfc/rfc8247#section-2.4
