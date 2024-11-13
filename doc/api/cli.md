@@ -48,7 +48,8 @@ Otherwise, the file is loaded using the CommonJS module loader. See
 When loading, the [ES module loader][Modules loaders] loads the program
 entry point, the `node` command will accept as input only files with `.js`,
 `.mjs`, or `.cjs` extensions; with `.wasm` extensions when
-[`--experimental-wasm-modules`][] is enabled; and with no extension when
+[`--experimental-wasm-modules`][] is enabled; with `.node` extensions when
+[`--experimental-addon-modules`][] is enabled; and with no extension when
 [`--experimental-default-type=module`][] is passed.
 
 ## Options
@@ -902,6 +903,14 @@ and `"` are usable.
 
 It is possible to run code containing inline types by passing
 [`--experimental-strip-types`][].
+
+### `--experimental-addon-modules`
+
+<!-- YAML
+added: REPLACEME
+-->
+
+Enable experimental addon modules with extension `.node` support.
 
 ### `--experimental-default-type=type`
 
@@ -3031,6 +3040,7 @@ one is included in the list below.
 * `--enable-source-maps`
 * `--entry-url`
 * `--experimental-abortcontroller`
+* `--experimental-addon-modules`
 * `--experimental-default-type`
 * `--experimental-detect-module`
 * `--experimental-eventsource`
@@ -3589,6 +3599,7 @@ node --stack-trace-limit=12 -p -e "Error.stackTraceLimit" # prints 12
 [`--diagnostic-dir`]: #--diagnostic-dirdirectory
 [`--env-file-if-exists`]: #--env-file-if-existsconfig
 [`--env-file`]: #--env-fileconfig
+[`--experimental-addon-modules`]: #--experimental-addon-modules
 [`--experimental-default-type=module`]: #--experimental-default-typetype
 [`--experimental-sea-config`]: single-executable-applications.md#generating-single-executable-preparation-blobs
 [`--experimental-strip-types`]: #--experimental-strip-types
