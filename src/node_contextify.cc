@@ -1612,7 +1612,8 @@ static std::vector<std::string_view> throws_only_in_cjs_error_messages = {
     "Identifier '__dirname' has already been declared",
     "await is only valid in async functions and "
     "the top level bodies of modules",
-    "Identifier 'require' has already been declared",};
+    "Identifier 'require' has already been declared",
+};
 
 // If cached_data is provided, it would be used for the compilation and
 // the on-disk compilation cache from NODE_COMPILE_CACHE (if configured)
@@ -1820,9 +1821,10 @@ bool ShouldRetryAsESM(Realm* realm,
   for (const auto& error_message : throws_only_in_cjs_error_messages) {
     if (message_view.find(error_message) != std::string_view::npos) {
       isolate->ThrowException(v8::Exception::SyntaxError(
-          String::NewFromUtf8(isolate,
-                              "Top-level await is not supported in CommonJS. "
-                              "Consider using ESM or wrap await in an async function.")
+          String::NewFromUtf8(
+              isolate,
+              "Top-level await is not supported in CommonJS. "
+              "Consider using ESM or wrap await in an async function.")
               .ToLocalChecked()));
       return true;
     }
