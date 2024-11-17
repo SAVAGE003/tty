@@ -3785,7 +3785,7 @@ changes:
 
 Type: Runtime
 
-Returning false on validation errors is deprecated.
+Passing invalid argument types is deprecated.
 
 [NIST SP 800-38D]: https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-38d.pdf
 [RFC 6066]: https://tools.ietf.org/html/rfc6066#section-3
