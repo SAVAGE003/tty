@@ -1,4 +1,7 @@
 #include "timers.h"
+
+#include <node_debug.h>
+
 #include "env-inl.h"
 #include "node_external_reference.h"
 #include "util-inl.h"
@@ -35,6 +38,7 @@ void BindingData::SlowGetLibuvNow(const FunctionCallbackInfo<Value>& args) {
 
 double BindingData::FastGetLibuvNow(Local<Object> unused,
                                     Local<Object> receiver) {
+  TRACK_V8_FAST_API_CALL("timers.getLibuvNow");
   return GetLibuvNowImpl(FromJSObject<BindingData>(receiver));
 }
 
