@@ -230,3 +230,12 @@ testKeys.forEach(common.mustCall((file) => {
     }, trickle.length));
   }, chunkSize.length));
 }, testKeys.length));
+
+{
+  // Test instantiation without 'new'
+  const gzip = zlib.Gzip();
+  assert.ok(gzip instanceof zlib.Gzip);
+  common.expectWarning({
+    'DEP0184': `Instantiating Gzip without the 'new' keyword has been deprecated.`
+  });
+}
