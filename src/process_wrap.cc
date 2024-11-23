@@ -26,6 +26,7 @@
 #include "stream_wrap.h"
 #include "util-inl.h"
 
+#include <stdio.h>
 #include <climits>
 #include <cstdlib>
 #include <cstring>
@@ -122,6 +123,16 @@ class ProcessWrap : public HandleWrap {
     for (uint32_t i = 0; i < len; i++) {
       Local<Object> stdio =
           stdios->Get(context, i).ToLocalChecked().As<Object>();
+
+      // Never trust the user.
+      // Refs: https://github.com/nodejs/node/issues/55932
+      if (!stdio->IsObject()) {
+        stdio = Object::New(env->isolate());
+        stdio->Set(context,
+                   env->type_string(),
+                   env->ignore_string()).FromJust();
+      }
+
       Local<Value> type =
           stdio->Get(context, env->type_string()).ToLocalChecked();
 
